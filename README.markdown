@@ -30,7 +30,11 @@ Maptastic adds a new #multi_input method as well as the map control:
 
 Note that the map input expects two parameters - a latitude and longitude. The order is important. The option zoom is optional, which defines the size of initial map.
 
-And also, I provide a new public function which can do the simple geocoding work. You can call MaptasticMap.findAddress(address) in js file, parameter address can be any of string, like "China, Shanghai, People Square".
+And also, I provide a new public function which can do the simple geocoding work. You can use this function in your js file:
+
+    MaptasticMap.findAddress(address)
+
+This will set your map center to the address you queried, the parameter address can be any of string, like "China, Shanghai, People Square".
 
 ## Development
 
