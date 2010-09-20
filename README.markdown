@@ -6,9 +6,11 @@ First, you'll need to install [Formtastic][1].
 
 Next, install Maptastic as a plugin:
 
-    script/plugin install git@github.com:MattHall/maptastic.git
+    script/plugin install git://github.com/pake007/maptastic.git (for Rails 2)
+    rails plugin install git://github.com/pake007/maptastic.git (for Rails 3)
 
-...and run the ake task to install the required js file into your javascripts directory. You will probably need to include this in your layouts, too.
+
+...and run the rake task to install the required js file into your javascripts directory. You will probably need to include this in your layouts, too.
 
     rake maptastic:install
 
@@ -23,28 +25,17 @@ Note that you no longer need an API key with the latest Google Maps release.
 Maptastic adds a new #multi_input method as well as the map control:
 
     <% semantic_form_for @venue do |f| %>
-      <%= f.multi_input :latitude, :longitude, :as => :map %>
+      <%= f.multi_input :latitude, :longitude, :as => :map, :zoom => 10 %>
     <% end %>
 
-Note that the map input expects two parameters - a latitude and longitude. The order is important.
+Note that the map input expects two parameters - a latitude and longitude. The order is important. The option zoom is optional, which defines the size of initial map.
+
+And also, I provide a new public function which can do the simple geocoding work. You can call MaptasticMap.findAddress(address) in js file, parameter address can be any of string, like "China, Shanghai, People Square".
 
 ## Development
 
-This plugin is under development. It's pretty simple, and patches are very welcome.
+Maybe there will be more functions to added in. Or you can fork and enhance it by yourself, good luck!
 
-[The Repo is available on GitHub][5]
+## Thanks
 
-[Report bugs here][4]
-
-A [testbed app is available][6] to check that the changes made actually work as expected.
-
-## Project Info
-
-Copyright © 2010 [Matthew Hall][2], released under the MIT license.
-
-[1]:http://github.com/justinfrench/formtastic
-[2]:http://codebeef.com
-[3]:http://code.google.com/apis/maps/documentation/javascript/
-[4]:https://matt.purifyapp.com/projects/maptastic/issues
-[5]:http://github.com/MattHall/maptastic
-[6]:http://github.com/MattHall/maptastic-testbed
+This repo is forked from MattHall/maptastic, thanks for his cool work!
