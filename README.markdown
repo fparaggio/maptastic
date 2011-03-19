@@ -10,13 +10,20 @@ Next, install Maptastic as a plugin:
     rails plugin install git://github.com/pake007/maptastic.git (for Rails 3)
 
 
-...and run the rake task to install the required js file into your javascripts directory. You will probably need to include this in your layouts, too.
+...and run the rake task to install the required js and css files into your javascripts and stylesheets directory. 
 
     rake maptastic:install
 
-You'll need to add the [Google Maps **V3**][3] script include in your page, above your semantic_form:
+Then, you will probably need to include them in your layouts.
 
-    <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=true'></script>
+    javascript_include_tag "maptastic.js"
+    stylesheet_link_tag "maptastic.css"
+
+! Oh, don't forget to include jquery lib, which is the maptastic based on !
+    
+Also, you'll need to add the [Google Maps **V3**][3] script include in your page, above your semantic_form:
+
+    javascript_include_tag "http://maps.google.com/maps/api/js?sensor=true"
 
 Note that you no longer need an API key with the latest Google Maps release.
 
@@ -28,13 +35,21 @@ Maptastic adds a new #multi_input method as well as the map control:
       <%= f.multi_input :latitude, :longitude, :as => :map, :zoom => 10 %>
     <% end %>
 
-Note that the map input expects two parameters - a latitude and longitude. The order is important. The option zoom is optional, which defines the size of initial map.
+Note that the map input expects two parameters - a latitude and longitude. The order is important. The option zoom is optional, which defines the size of initial map, you can use a number,  or a symbol which can be one of [:world, :country, :state, :province, :city, :district] or the corresponding string. So it can also be:
 
-And also, I provide a new public function which can do the simple geocoding work. You can use this function in your js file:
+    <% semantic_form_for @venue do |f| %>
+      <%= f.multi_input :latitude, :longitude, :as => :map, :zoom => "country" %>
+    <% end %>
 
-    MaptasticMap.findAddress(address)
+This plugin provides simple geocoding feature. If your want to zoom the map according to the address fields in the form, you need to do like:
 
-This will set your map center to the address you queried, the parameter address can be any of string, like "China, Shanghai, People Square".
+    <% semantic_form_for @venue do |f| %>
+      <%= f.input :country, :geocoder => true %>
+      <%= f.input :city, :geocoder => true %>
+      <%= f.input :address, :geocoder => true %>
+    <% end %>
+
+The address string will be the combination of the fields value, like "China, Shanghai, People Square". After inputing text or select option on the fields,  it will set your map center to the address you queried.
 
 ## Development
 
@@ -42,4 +57,5 @@ Maybe there will be more functions to added in. Or you can fork and enhance it b
 
 ## Thanks
 
-This repo is forked from MattHall/maptastic, thanks for his cool work!
+MattHall:  Fork this plugin from his maptastic plugin. 
+Arron Qian: Refactor the js file by using jquery metadata plugin.
