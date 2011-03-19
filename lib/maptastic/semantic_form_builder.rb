@@ -16,7 +16,7 @@ module Maptastic
     def input(method, options = {})
       if options[:geocoder] == true 
         if options[:input_html] && options[:input_html][:class]
-          options[:input_html][:class] << "maptastic-geocoder"
+          options[:input_html][:class] << " maptastic-geocoder"
         else
           options[:input_html] = (options[:input] || {}).merge(:class => "maptastic-geocoder")
         end
@@ -35,7 +35,7 @@ module Maptastic
     end
 
     def to_metadata_options(methods, options)
-      zoom = (options[:zoom].class == Fixnum) ? options[:zoom] : (ZOOMS[options[:zoom].intern] || 1)
+      zoom = (options[:zoom].class == Fixnum) ? options[:zoom] : (ZOOMS[(options[:zoom].class == String ? options[:zoom].intern : options[:zoom])] || 1)
       {
         :gmap => {
           :zoom => zoom,
