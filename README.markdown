@@ -14,7 +14,9 @@ Next, install Maptastic as a plugin:
 
     rake maptastic:install
 
-Then, you will probably need to include them in your layouts.
+Then, you will probably need to include them in your layouts. And don't forget to include jquery lib which is used to code maptastic.js
+
+    javascript_include_tag "jquery"
 
     javascript_include_tag "maptastic.js"
     stylesheet_link_tag "maptastic.css"
