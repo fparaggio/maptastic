@@ -58,4 +58,5 @@ Maybe there will be more functions to added in. Or you can fork and enhance it b
 ## Thanks
 
 MattHall:  Fork this plugin from his maptastic plugin. 
-Arron Qian: Refactor the js file by using jquery metadata plugin.
+
+aq1018: Refactor the js file by using jquery metadata plugin.
