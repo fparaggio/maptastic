@@ -2,7 +2,7 @@
 
 ## Installation
 
-First, you'll need to install [Formtastic][1].
+First, you'll need to install [Formtastic]
 
 Next, install Maptastic as a plugin:
 
@@ -20,8 +20,6 @@ Then, you will probably need to include them in your layouts. And don't forget t
 
     javascript_include_tag "maptastic.js"
     stylesheet_link_tag "maptastic.css"
-
-! Oh, don't forget to include jquery lib, which is the maptastic based on !
     
 Also, you'll need to add the [Google Maps **V3**][3] script include in your page, above your semantic_form:
 
