@@ -35,7 +35,7 @@ Maptastic adds a new #multi_input method as well as the map control:
       <%= f.multi_input :latitude, :longitude, :as => :map, :zoom => 10 %>
     <% end %>
 
-Note that the map input expects two parameters - a latitude and longitude. The order is important. The option zoom is optional, which defines the size of initial map, you can use a number,  or a symbol which can be one of [:world, :country, :state, :province, :city, :district] or the corresponding string. So it can also be:
+Note that the map input expects two parameters - a latitude and longitude, so you need to ad this two fields in your model. The order is important. The option zoom is optional, which defines the size of initial map, you can use a number,  or a symbol which can be one of [:world, :country, :state, :province, :city, :district] or the corresponding string. So it can also be:
 
     <% semantic_form_for @venue do |f| %>
       <%= f.multi_input :latitude, :longitude, :as => :map, :zoom => "country" %>
